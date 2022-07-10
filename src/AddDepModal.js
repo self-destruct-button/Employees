@@ -4,6 +4,32 @@ import { Modal, Button, Row, Col, Form } from "react-bootstrap";
 export class AddDepModal extends Component {
   constructor(props) {
     super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  //enviar la información almacenadad en el modal, agregar un department
+  handleSubmit(event) {
+    event.preventDefault();
+    fetch(process.env.REACT_APP_API + "/Department", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        //DepartmentId: null,
+        DepartmentName: event.target.DepartmentName.value,
+      }),
+    })
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          alert(result);
+        },
+        (error) => {
+          alert("Failed");
+        }
+      );
   }
 
   render() {
@@ -34,7 +60,7 @@ export class AddDepModal extends Component {
 
                   <Form.Group>
                     <Button variant="primary" type="submit">
-                      Add Department
+                      Agregar
                     </Button>
                   </Form.Group>
                 </Form>
