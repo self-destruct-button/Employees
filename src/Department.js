@@ -61,7 +61,7 @@ export class Department extends Component {
                 <td>
                   <ButtonToolbar>
                     <Button
-                      classname="mr-2"
+                      className="mr-2"
                       variant="info"
                       onClick={() =>
                         this.setState({
@@ -73,7 +73,7 @@ export class Department extends Component {
                       Edit
                     </Button>
                     <Button
-                      classname="mr-2"
+                      className="mr-2"
                       variant="danger"
                       onClick={() => this.deleteDep(dep.DepartmentId)}>
                       Delete
